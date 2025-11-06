@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-
+using System.ComponentModel.DataAnnotations;
 namespace CarHubProject.Models
 {
     public class AppDbContext : DbContext

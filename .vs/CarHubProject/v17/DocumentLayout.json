@@ -1,0 +1,161 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\EL10_gazy\\source\\repos\\CarHubProject\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0FA6E642-DB90-4BF4-9714-FD6DAEBE1AD5}|CarHubProject\\CarHubProject.csproj|c:\\users\\el10_gazy\\source\\repos\\carhubproject\\carhubproject\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0FA6E642-DB90-4BF4-9714-FD6DAEBE1AD5}|CarHubProject\\CarHubProject.csproj|solutionrelative:carhubproject\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0FA6E642-DB90-4BF4-9714-FD6DAEBE1AD5}|CarHubProject\\CarHubProject.csproj|c:\\users\\el10_gazy\\source\\repos\\carhubproject\\carhubproject\\models\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0FA6E642-DB90-4BF4-9714-FD6DAEBE1AD5}|CarHubProject\\CarHubProject.csproj|solutionrelative:carhubproject\\models\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0FA6E642-DB90-4BF4-9714-FD6DAEBE1AD5}|CarHubProject\\CarHubProject.csproj|c:\\users\\el10_gazy\\source\\repos\\carhubproject\\carhubproject\\models\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0FA6E642-DB90-4BF4-9714-FD6DAEBE1AD5}|CarHubProject\\CarHubProject.csproj|solutionrelative:carhubproject\\models\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0FA6E642-DB90-4BF4-9714-FD6DAEBE1AD5}|CarHubProject\\CarHubProject.csproj|c:\\users\\el10_gazy\\source\\repos\\carhubproject\\carhubproject\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0FA6E642-DB90-4BF4-9714-FD6DAEBE1AD5}|CarHubProject\\CarHubProject.csproj|solutionrelative:carhubproject\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0FA6E642-DB90-4BF4-9714-FD6DAEBE1AD5}|CarHubProject\\CarHubProject.csproj|c:\\users\\el10_gazy\\source\\repos\\carhubproject\\carhubproject\\models\\contract.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0FA6E642-DB90-4BF4-9714-FD6DAEBE1AD5}|CarHubProject\\CarHubProject.csproj|solutionrelative:carhubproject\\models\\contract.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0FA6E642-DB90-4BF4-9714-FD6DAEBE1AD5}|CarHubProject\\CarHubProject.csproj|c:\\users\\el10_gazy\\source\\repos\\carhubproject\\carhubproject\\models\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0FA6E642-DB90-4BF4-9714-FD6DAEBE1AD5}|CarHubProject\\CarHubProject.csproj|solutionrelative:carhubproject\\models\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0FA6E642-DB90-4BF4-9714-FD6DAEBE1AD5}|CarHubProject\\CarHubProject.csproj|c:\\users\\el10_gazy\\source\\repos\\carhubproject\\carhubproject\\models\\car.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0FA6E642-DB90-4BF4-9714-FD6DAEBE1AD5}|CarHubProject\\CarHubProject.csproj|solutionrelative:carhubproject\\models\\car.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0FA6E642-DB90-4BF4-9714-FD6DAEBE1AD5}|CarHubProject\\CarHubProject.csproj|c:\\users\\el10_gazy\\source\\repos\\carhubproject\\carhubproject\\models\\brand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0FA6E642-DB90-4BF4-9714-FD6DAEBE1AD5}|CarHubProject\\CarHubProject.csproj|solutionrelative:carhubproject\\models\\brand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\EL10_gazy\\source\\repos\\CarHubProject\\CarHubProject\\Models\\User.cs",
+              "RelativeDocumentMoniker": "CarHubProject\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\EL10_gazy\\source\\repos\\CarHubProject\\CarHubProject\\Models\\User.cs",
+              "RelativeToolTip": "CarHubProject\\Models\\User.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAYwBUAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T16:47:33.324Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Review.cs",
+              "DocumentMoniker": "C:\\Users\\EL10_gazy\\source\\repos\\CarHubProject\\CarHubProject\\Models\\Review.cs",
+              "RelativeDocumentMoniker": "CarHubProject\\Models\\Review.cs",
+              "ToolTip": "C:\\Users\\EL10_gazy\\source\\repos\\CarHubProject\\CarHubProject\\Models\\Review.cs",
+              "RelativeToolTip": "CarHubProject\\Models\\Review.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAowBwAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T16:47:26.088Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Payment.cs",
+              "DocumentMoniker": "C:\\Users\\EL10_gazy\\source\\repos\\CarHubProject\\CarHubProject\\Models\\Payment.cs",
+              "RelativeDocumentMoniker": "CarHubProject\\Models\\Payment.cs",
+              "ToolTip": "C:\\Users\\EL10_gazy\\source\\repos\\CarHubProject\\CarHubProject\\Models\\Payment.cs",
+              "RelativeToolTip": "CarHubProject\\Models\\Payment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T16:47:19.138Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\EL10_gazy\\source\\repos\\CarHubProject\\CarHubProject\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "CarHubProject\\Models\\ErrorViewModel.cs",
+              "ToolTip": "C:\\Users\\EL10_gazy\\source\\repos\\CarHubProject\\CarHubProject\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "CarHubProject\\Models\\ErrorViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T16:47:11.328Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Contract.cs",
+              "DocumentMoniker": "C:\\Users\\EL10_gazy\\source\\repos\\CarHubProject\\CarHubProject\\Models\\Contract.cs",
+              "RelativeDocumentMoniker": "CarHubProject\\Models\\Contract.cs",
+              "ToolTip": "C:\\Users\\EL10_gazy\\source\\repos\\CarHubProject\\CarHubProject\\Models\\Contract.cs",
+              "RelativeToolTip": "CarHubProject\\Models\\Contract.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAIwCMAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T16:46:59.575Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\EL10_gazy\\source\\repos\\CarHubProject\\CarHubProject\\Models\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "CarHubProject\\Models\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\EL10_gazy\\source\\repos\\CarHubProject\\CarHubProject\\Models\\AppDbContext.cs",
+              "RelativeToolTip": "CarHubProject\\Models\\AppDbContext.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAQwBIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T16:45:52.637Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Car.cs",
+              "DocumentMoniker": "C:\\Users\\EL10_gazy\\source\\repos\\CarHubProject\\CarHubProject\\Models\\Car.cs",
+              "RelativeDocumentMoniker": "CarHubProject\\Models\\Car.cs",
+              "ToolTip": "C:\\Users\\EL10_gazy\\source\\repos\\CarHubProject\\CarHubProject\\Models\\Car.cs",
+              "RelativeToolTip": "CarHubProject\\Models\\Car.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAAwC4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T16:42:39.713Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Brand.cs",
+              "DocumentMoniker": "C:\\Users\\EL10_gazy\\source\\repos\\CarHubProject\\CarHubProject\\Models\\Brand.cs",
+              "RelativeDocumentMoniker": "CarHubProject\\Models\\Brand.cs",
+              "ToolTip": "C:\\Users\\EL10_gazy\\source\\repos\\CarHubProject\\CarHubProject\\Models\\Brand.cs",
+              "RelativeToolTip": "CarHubProject\\Models\\Brand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T16:42:33.72Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
