@@ -24,7 +24,7 @@ namespace CarHubProject.Models
         [Required(ErrorMessage = "A review must be linked to a car.")]
         [Display(Name = "Car")]
         public int CarId { get; set; }
-\
+
         [Display(Name = "Hidden")]
         public bool IsHidden { get; set; } = false; 
     }

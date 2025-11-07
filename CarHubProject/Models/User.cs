@@ -42,6 +42,7 @@ namespace CarHubProject.Models
         [Required]
         public DateTime CreatedAt { get; set; } = DateTime.Now;
 
-        public bool IsActive { get; set; } = false; 
+        public bool IsActive { get; set; } = false;
+        public bool IsDeleted { get; set; } = false;
     }
 }

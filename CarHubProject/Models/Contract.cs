@@ -43,5 +43,6 @@ namespace CarHubProject.Models
         [Required(ErrorMessage = "An employee must be assigned to the contract.")]
         [Display(Name = "Employee")]
         public int EmployeeId { get; set; }
+        public bool IsDeleted { get; set; } = false;
     }
 }

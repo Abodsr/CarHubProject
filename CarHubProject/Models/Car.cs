@@ -41,6 +41,7 @@ namespace CarHubProject.Models
         [Required]
         public int BrandId { get; set; }
 
+        public Brand ?Brand { get; set; }
         public bool IsDeleted { get; set; } = false;
     }
 }

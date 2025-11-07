@@ -27,5 +27,6 @@ namespace CarHubProject.Models
         [Required(ErrorMessage = "This payment must be linked to a contract.")]
         [Display(Name = "Contract")]
         public int ContractId { get; set; }
+        public bool IsDeleted { get; set; } = false;
     }
 }
