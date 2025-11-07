@@ -12,7 +12,9 @@ namespace CarHubProject.Repositories
         }
         public void Add(Brand brand)
         {
-          _context.Brands.Add(brand);
+
+            _context.Brands.Add(brand);
+  
         }
 
         public void Delete(Brand brand)
@@ -22,6 +24,12 @@ namespace CarHubProject.Repositories
             {
                 DelBrand.IsDeleted = true;
             }
+        }
+
+        public List<Brand> GetAll()
+        {
+           
+            return _context.Brands.Where(x=>x.IsDeleted).ToList();
         }
 
         public Brand? GetById(int brandId)

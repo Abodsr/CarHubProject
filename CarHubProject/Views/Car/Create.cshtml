@@ -1,0 +1,98 @@
+﻿@{
+    ViewData["Title"] = "Create";
+}
+
+@model CarHubProject.Models.Car
+
+
+<h1 class="mb-4">Add New Car</h1>
+
+<form  class="p-3 border rounded shadow-sm" method="post">
+
+    <div class="mb-3">
+        <label asp-for="BrandId" class="form-label">Brand</label>
+        <select asp-for="BrandId" class="form-select">
+            <option value="">-- Chose Brand --</option>
+            
+            @foreach (var brand in ViewBag.brands)
+            {
+                <option value="@brand.BrandId">@brand.BrandName</option>
+            }
+        </select>
+        <span asp-validation-for="BrandId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Model" class="form-label">Model</label>
+        <input asp-for="Model" class="form-control" placeholder="Like: Corolla, Civic, BMW X5" />
+        <span asp-validation-for="Model" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Year" class="form-label">Year</label>
+        <input asp-for="Year" class="form-control" type="number" />
+        <span asp-validation-for="Year" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="PricePerDay" class="form-label">PricePerDay</label>
+        <input asp-for="PricePerDay" class="form-control" type="number" />
+        <span asp-validation-for="PricePerDay" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Color" class="form-label">Color</label>
+        <input asp-for="Color" class="form-control" placeholder="Red/Blue/...." />
+        <span asp-validation-for="Color" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Transmission" class="form-label">Transmission</label>
+        <select asp-for="Transmission" class="form-select">
+            <option value="">-- Chose --</option>
+            <option>Manual</option>
+            <option>Automatic</option>
+        </select>
+        <span asp-validation-for="Transmission" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="FuelType" class="form-label">FuelType</label>
+        <select asp-for="FuelType" class="form-select">
+            <option value="">-- Chose --</option>
+            <option>Petrol</option>
+            <option>Diesel</option>
+            <option>Electric</option>
+            <option>Hybrid</option>
+        </select>
+        <span asp-validation-for="FuelType" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Mileage" class="form-label">Mileage</label>
+        <input asp-for="Mileage" class="form-control" type="number" />
+        <span asp-validation-for="Mileage" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Status" class="form-label">Status</label>
+        <select asp-for="Status" class="form-select">
+            <option value="">-- Cohse Status --</option>
+            <option>Available</option>
+            <option>Rented</option>
+            <option>Maintenance</option>
+        </select>
+        <span asp-validation-for="Status" class="text-danger"></span>
+    </div>
+
+    <div class="d-flex justify-content-between mt-4">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a asp-action="Index" asp-controller="Home" class="btn btn-secondary">Back to Menu</a>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

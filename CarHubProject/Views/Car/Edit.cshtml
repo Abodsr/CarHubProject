@@ -1,0 +1,101 @@
+﻿@{
+    ViewData["Title"] = "Edit";
+}
+
+@model CarHubProject.Models.Car
+
+<h1 class="mb-4">Edit Car</h1>
+
+<form asp-action="Edit" asp-controller="Car" method="post" class="p-3 border rounded shadow-sm">
+
+   
+    <input type="hidden" asp-for="Id" />
+
+    <div class="mb-3">
+        <label asp-for="BrandId" class="form-label">Brand</label>
+        <select asp-for="BrandId" class="form-select">
+            <option value="">-- Choose Brand --</option>
+            @foreach (var brand in ViewBag.Brands)
+            {
+                <option value="@brand.BrandId" selected="@(brand.BrandId == Model.BrandId)">
+                    @brand.BrandName
+                </option>
+            }
+        </select>
+        <span asp-validation-for="BrandId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Model" class="form-label">Model</label>
+        <input asp-for="Model" class="form-control" />
+        <span asp-validation-for="Model" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Year" class="form-label">Year</label>
+        <input asp-for="Year" class="form-control" type="number" />
+        <span asp-validation-for="Year" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="PricePerDay" class="form-label">Price Per Day (EGP)</label>
+        <input asp-for="PricePerDay" class="form-control" type="number" />
+        <span asp-validation-for="PricePerDay" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Color" class="form-label">Color</label>
+        <input asp-for="Color" class="form-control" />
+        <span asp-validation-for="Color" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Transmission" class="form-label">Transmission</label>
+        <select asp-for="Transmission" class="form-select">
+            <option value="">-- Choose --</option>
+            <option value="Manual" selected="@(Model.Transmission == "Manual")">Manual</option>
+            <option value="Automatic" selected="@(Model.Transmission == "Automatic")">Automatic</option>
+        </select>
+        <span asp-validation-for="Transmission" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="FuelType" class="form-label">Fuel Type</label>
+        <select asp-for="FuelType" class="form-select">
+            <option value="">-- Choose --</option>
+            <option value="Petrol" selected="@(Model.FuelType == "Petrol")">Petrol</option>
+            <option value="Diesel" selected="@(Model.FuelType == "Diesel")">Diesel</option>
+            <option value="Electric" selected="@(Model.FuelType == "Electric")">Electric</option>
+            <option value="Hybrid" selected="@(Model.FuelType == "Hybrid")">Hybrid</option>
+        </select>
+        <span asp-validation-for="FuelType" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Mileage" class="form-label">Mileage (KM)</label>
+        <input asp-for="Mileage" class="form-control" type="number" />
+        <span asp-validation-for="Mileage" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Status" class="form-label">Status</label>
+        <select asp-for="Status" class="form-select">
+            <option value="">-- Choose Status --</option>
+            <option value="Available" selected="@(Model.Status == "Available")">Available</option>
+            <option value="Rented" selected="@(Model.Status == "Rented")">Rented</option>
+            <option value="Maintenance" selected="@(Model.Status == "Maintenance")">Maintenance</option>
+        </select>
+        <span asp-validation-for="Status" class="text-danger"></span>
+    </div>
+
+    <div class="d-flex justify-content-between mt-4">
+        <button type="submit" class="btn btn-success">Save Changes</button>
+        <a asp-action="Index" asp-controller="Car" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

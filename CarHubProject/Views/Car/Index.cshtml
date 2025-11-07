@@ -1,0 +1,63 @@
+﻿@model IEnumerable<CarHubProject.Models.Car>
+
+@{
+    ViewData["Title"] = "Car Listings";
+}
+
+<!-- Car Listings Section -->
+<section id="listings" class="listings-section py-5">
+    <div class="container">
+        <h2 class="mb-4 text-center">Featured Listings</h2>
+
+        @if (Model == null || !Model.Any())
+        {
+            <div class="alert alert-info text-center">
+                <i class="fas fa-info-circle"></i> No cars found matching your criteria.
+            </div>
+        }
+        else
+        {
+            <div id="carListings" class="row g-4">
+                @foreach (var car in Model)
+                {
+                    <div class="col-md-4 col-lg-3">
+                        <div class="card h-100 shadow-sm border-0">
+                            <img src="~/images/default-car.jpg" class="card-img-top" alt="@car.Model" style="height:200px; object-fit:cover;" />
+
+                            <div class="card-body">
+                                <h5 class="card-title">@car.Model</h5>
+                                <p class="card-text mb-1">
+                                    <strong>Brand:</strong> @(car.Brand?.BrandName ?? "N/A")
+                                </p>
+                                <p class="card-text mb-1">
+                                    <strong>Year:</strong> @car.Year
+                                </p>
+                                <p class="card-text mb-1">
+                                    <strong>Fuel:</strong> @car.FuelType
+                                </p>
+                                <p class="card-text mb-1">
+                                    <strong>Transmission:</strong> @car.Transmission
+                                </p>
+                                <p class="card-text">
+                                    <strong>Price/Day:</strong> @car.PricePerDay EGP
+                                </p>
+                            </div>
+
+                            <div class="card-footer bg-transparent border-0 d-flex justify-content-between">
+                                <a asp-action="Details" asp-route-id="@car.Id" class="btn btn-outline-primary btn-sm">
+                                    Details
+                                </a>
+                                <a asp-action="Edit" asp-route-id="@car.Id" class="btn btn-outline-success btn-sm">
+                                    Edit
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@car.Id" class="btn btn-outline-danger btn-sm">
+                                    Delete
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</section>
