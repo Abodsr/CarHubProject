@@ -14,7 +14,8 @@ namespace CarHubProject.Repositories
         {
 
             _context.Brands.Add(brand);
-  
+           
+
         }
 
         public void Delete(Brand brand)
@@ -29,7 +30,7 @@ namespace CarHubProject.Repositories
         public List<Brand> GetAll()
         {
            
-            return _context.Brands.Where(x=>x.IsDeleted).ToList();
+            return _context.Brands.Where(x=>!x.IsDeleted).ToList();
         }
 
         public Brand? GetById(int brandId)

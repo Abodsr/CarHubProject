@@ -1,6 +1,7 @@
 ﻿using CarHubProject.Models;
 using CarHubProject.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using System.Drawing.Drawing2D;
 
 namespace CarHubProject.Controllers
 {
@@ -14,10 +15,25 @@ namespace CarHubProject.Controllers
             _carRepository = carRepository;
             _brandRepository = brandRepository;
         }
-        public IActionResult Index()
+        public IActionResult Index(string? brand, decimal? minPrice, decimal? maxPrice, string? fuel, int? year)
         {
-            var cars = _carRepository.GetAll();
+            
+            
+            ViewBag.Brands = _brandRepository.GetAll();
+
+            
+            var brandId = _brandRepository.GetAll()
+                            .FirstOrDefault(b => b.BrandName.ToLower() == brand?.ToLower())?.BrandId;
+
+            var cars = _carRepository.Search(
+                brandId: brandId,
+                year: year,
+                fuelType: fuel,
+                minPrice: minPrice,
+                maxPrice: maxPrice
+            );
             return View(cars);
+            
         }
         
         [HttpGet]
@@ -67,7 +83,15 @@ namespace CarHubProject.Controllers
             ViewData["brands"] = _brandRepository.GetAll();
             return View(car);
         }
+        public IActionResult Delete(int id)
+        {
+            var delCar= _carRepository.GetById(id);
+           _carRepository.Delete(delCar);
+            _carRepository.Save();
+            return RedirectToAction("Index");
+        }
 
+        
 
     }
 }

@@ -31,5 +31,12 @@ namespace CarHubProject.Controllers
             }
              return View();
         }
+        public IActionResult Delete(int id)
+        {
+            var delBrand = _brandRepository.GetById(id);
+            _brandRepository.Delete(delBrand);
+            _brandRepository.Save();
+            return RedirectToAction("Index");
+        }
     }
 }

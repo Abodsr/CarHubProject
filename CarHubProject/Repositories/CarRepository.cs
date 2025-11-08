@@ -55,9 +55,12 @@ namespace CarHubProject.Repositories
             _context.SaveChanges();
         }
 
-        public List<Car> Search(string? model = null, int? brandId = null, int? year = null, string? fuelType = null)
+        public List<Car> Search(string? model = null, int? brandId = null, int? year = null,
+                        string? fuelType = null, decimal? minPrice = null, decimal? maxPrice = null)
         {
-            var query = _context.Cars.Where(x => !x.IsDeleted);
+            var query = _context.Cars
+                .Include(c => c.Brand)
+                .Where(x => !x.IsDeleted);
 
             if (!string.IsNullOrEmpty(model))
                 query = query.Where(x => x.Model.ToLower().Contains(model.ToLower()));
@@ -71,13 +74,14 @@ namespace CarHubProject.Repositories
             if (!string.IsNullOrEmpty(fuelType))
                 query = query.Where(x => x.FuelType.ToLower() == fuelType.ToLower());
 
+            if (minPrice.HasValue)
+                query = query.Where(x => x.PricePerDay >= minPrice);
+
+            if (maxPrice.HasValue)
+                query = query.Where(x => x.PricePerDay <= maxPrice);
+
             return query.ToList();
         }
 
-        public List<Car> FilterByPriceRange(decimal minPrice, decimal maxPrice)
-        {
-            return _context.Cars.Include(x => x.Brand).Where(x => !x.IsDeleted
-            && x.PricePerDay >= minPrice && x.PricePerDay <= maxPrice).ToList();
-        }
     }
 }
