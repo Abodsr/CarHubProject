@@ -157,7 +157,6 @@ C:\Users\Abdelrahman\source\repos\CarHubProject\CarHubProject\obj\Debug\net8.0\s
 C:\Users\Abdelrahman\source\repos\CarHubProject\CarHubProject\obj\Debug\net8.0\staticwebassets.build.json.cache
 C:\Users\Abdelrahman\source\repos\CarHubProject\CarHubProject\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\Abdelrahman\source\repos\CarHubProject\CarHubProject\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-C:\Users\Abdelrahman\source\repos\CarHubProject\CarHubProject\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\Abdelrahman\source\repos\CarHubProject\CarHubProject\obj\Debug\net8.0\CarHubPr.2A19ED26.Up2Date
 C:\Users\Abdelrahman\source\repos\CarHubProject\CarHubProject\obj\Debug\net8.0\CarHubProject.dll
 C:\Users\Abdelrahman\source\repos\CarHubProject\CarHubProject\obj\Debug\net8.0\refint\CarHubProject.dll
@@ -575,3 +574,8 @@ C:\Users\dadsa\source\repos\CarHubProject\CarHubProject\obj\Debug\net8.0\CarHubP
 C:\Users\dadsa\source\repos\CarHubProject\CarHubProject\obj\Debug\net8.0\CarHubProject.genruntimeconfig.cache
 C:\Users\dadsa\source\repos\CarHubProject\CarHubProject\obj\Debug\net8.0\ref\CarHubProject.dll
 C:\Users\dadsa\source\repos\CarHubProject\CarHubProject\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.InMemory.dll
+C:\Users\Abdelrahman\source\repos\CarHubProject\CarHubProject\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.InMemory.dll
+C:\Users\Abdelrahman\source\repos\CarHubProject\CarHubProject\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Abdelrahman\source\repos\CarHubProject\CarHubProject\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.UI.dll
+C:\Users\Abdelrahman\source\repos\CarHubProject\CarHubProject\obj\Debug\net8.0\CarHubProject.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Abdelrahman\source\repos\CarHubProject\CarHubProject\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

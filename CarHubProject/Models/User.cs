@@ -1,25 +1,19 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace CarHubProject.Models
 {
-    public class User
+    public class User : IdentityUser
     {
-        public int UserId { get; set; }
+        [Required(ErrorMessage = "First name is required.")]
+        [StringLength(50)]
+        [Display(Name = "First Name")]
+        public string? FirstName { get; set; }
 
-        [Required(ErrorMessage = "Full name is required.")]
-        [StringLength(100)]
-        [Display(Name = "Full Name")]
-        public string FullName { get; set; }
-
-        [Required(ErrorMessage = "Email is required.")]
-        [EmailAddress(ErrorMessage = "Invalid email address.")]
-        [StringLength(100)]
-        public string Email { get; set; }
-
-        [Phone(ErrorMessage = "Invalid phone number format.")]
-        [StringLength(20)]
-        [Display(Name = "Phone Number")]
-        public string? PhoneNumber { get; set; } // Optional
+        [Required(ErrorMessage = "Last name is required.")]
+        [StringLength(50)]
+        [Display(Name = "Last Name")]
+        public string? LastName { get; set; }
 
         [StringLength(250)]
         public string? Address { get; set; } // Optional
@@ -30,14 +24,7 @@ namespace CarHubProject.Models
 
         [StringLength(50)]
         [Display(Name = "License Number")]
-        public string LicenseNumber { get; set; } 
-
-        [Required]
-        public string PasswordHash { get; set; } 
-
-        [Required]
-        [StringLength(20)]
-        public string Role { get; set; } = "Customer";
+        public string? LicenseNumber { get; set; } 
 
         [Required]
         public DateTime CreatedAt { get; set; } = DateTime.Now;

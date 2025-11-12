@@ -10,7 +10,7 @@ namespace CarHubProject.Models
         public int Rating { get; set; }
 
         [StringLength(2000, ErrorMessage = "Comment cannot be longer than 2000 characters.")]
-        public string Comment { get; set; } // Comment can be optional
+        public string? Comment { get; set; } // Comment can be optional
 
         [Required]
         [DataType(DataType.Date)]

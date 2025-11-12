@@ -8,7 +8,7 @@ namespace CarHubProject.Models
         [Required]
         [StringLength(50, ErrorMessage = "Contract type must be (\"Rental\", \"Sale\")")]
         [Display(Name = "Contract Type")]
-        public string ContractType { get; set; } 
+        public string? ContractType { get; set; } 
 
         [Required]
         [DataType(DataType.Date)]
@@ -29,11 +29,11 @@ namespace CarHubProject.Models
         [Required]
         [StringLength(50)]
         [Display(Name = "Payment Status")]
-        public string PaymentStatus { get; set; } // pending,paid,overdue
+        public string? PaymentStatus { get; set; } // pending,paid,overdue
 
         [Required]
         [StringLength(50)]
-        public string Status { get; set; } // active,completed,cancelled
+        public string? Status { get; set; } // active,completed,cancelled
 
 
         [Required(ErrorMessage = "A customer must be assigned to the contract.")]

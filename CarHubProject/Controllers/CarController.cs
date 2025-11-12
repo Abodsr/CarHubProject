@@ -2,6 +2,7 @@
 using CarHubProject.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System.Drawing.Drawing2D;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CarHubProject.Controllers
 {
@@ -35,14 +36,27 @@ namespace CarHubProject.Controllers
             return View(cars);
             
         }
+
+        // GET: Car/Details/5
+        public IActionResult Details(int id)
+        {
+            var car = _carRepository.GetById(id);
+            if (car == null)
+            {
+                return NotFound();
+            }
+            return View(car);
+        }
         
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             ViewData["brands"] = _brandRepository.GetAll();
             return View();
         }
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public IActionResult Create(Car car)
         {
             ViewData["brands"] = _brandRepository.GetAll();
@@ -56,6 +70,7 @@ namespace CarHubProject.Controllers
             return View(car);
         }
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult Edit(int id)
         {
             var car = _carRepository.GetById(id);
@@ -70,6 +85,7 @@ namespace CarHubProject.Controllers
 
        
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public IActionResult Edit(Car car)
         {
             if (ModelState.IsValid)
@@ -83,12 +99,31 @@ namespace CarHubProject.Controllers
             ViewData["brands"] = _brandRepository.GetAll();
             return View(car);
         }
+        // GET: Car/Delete/5
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int id)
         {
-            var delCar= _carRepository.GetById(id);
-           _carRepository.Delete(delCar);
-            _carRepository.Save();
-            return RedirectToAction("Index");
+            var car = _carRepository.GetById(id);
+            if (car == null)
+            {
+                return NotFound();
+            }
+            return View(car);
+        }
+
+        // POST: Car/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            var car = _carRepository.GetById(id);
+            if (car != null)
+            {
+                _carRepository.Delete(car);
+                _carRepository.Save();
+            }
+            return RedirectToAction(nameof(Index));
         }
 
         

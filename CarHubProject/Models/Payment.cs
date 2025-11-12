@@ -13,11 +13,11 @@ namespace CarHubProject.Models
         [Required]
         [StringLength(50)]
         [Display(Name = "Payment Type (credit card,cash,bank)")]
-        public string PaymentType { get; set; } 
+        public string? PaymentType { get; set; } 
 
         [Required]
         [StringLength(50)]
-        public string Status { get; set; } // completed,pending,failed
+        public string? Status { get; set; } // completed,pending,failed
 
         [Required]
         [DataType(DataType.DateTime)]

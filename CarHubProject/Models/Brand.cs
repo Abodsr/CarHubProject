@@ -8,7 +8,7 @@ namespace CarHubProject.Models
 
         [Required(ErrorMessage = "Brand name is required.")]
         [StringLength(100)]
-        public string BrandName { get; set; }
+        public string? BrandName { get; set; }
         public bool IsDeleted { get; set; } = false;
         public List<Car>? Cars { get; set; } = new List<Car>();
     }
