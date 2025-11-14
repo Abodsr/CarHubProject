@@ -1,4 +1,7 @@
-﻿@model IEnumerable<CarHubProject.Models.Car>
+@model IEnumerable<CarHubProject.Models.Car>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<CarHubProject.Models.User> SignInManager
+@inject UserManager<CarHubProject.Models.User> UserManager
 
 @{
     ViewData["Title"] = "Car Listings";
@@ -15,7 +18,7 @@
         <form method="get" asp-action="Index" asp-controller="Car">
             <div class="row g-3">
                 <!-- Brand -->
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <label class="form-label fw-bold">Brand</label>
                     <select name="brand" class="form-select">
                         <option value="">All Brands</option>
@@ -30,8 +33,35 @@
                     </select>
                 </div>
 
+                <!-- Price Type -->
+                <div class="col-md-2">
+                    <label class="form-label fw-bold">Price Type</label>
+                    <select name="priceType" class="form-select">
+                        @{
+                            var priceTypeOptions = new List<Tuple<string, string>>
+                            {
+                                Tuple.Create("PricePerDay", "Price/Day"),
+                                Tuple.Create("SalePrice", "Sale Price")
+                            };
+
+                            foreach (var option in priceTypeOptions)
+                            {
+                                var isSelected = (ViewBag.CurrentPriceType == option.Item1 || (string.IsNullOrEmpty(ViewBag.CurrentPriceType) && option.Item1 == "PricePerDay"));
+                                if (isSelected)
+                                {
+                                    <option value="@option.Item1" selected>@option.Item2</option>
+                                }
+                                else
+                                {
+                                    <option value="@option.Item1">@option.Item2</option>
+                                }
+                            }
+                        }
+                    </select>
+                </div>
+
                 <!-- Price -->
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <label class="form-label fw-bold">Price Range (EGP)</label>
                     <div class="input-group">
                         <input type="number" class="form-control" name="minPrice" placeholder="Min" min="0" />
@@ -41,7 +71,7 @@
                 </div>
 
                 <!-- Fuel Type -->
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <label class="form-label fw-bold">Fuel Type</label>
                     <select name="fuel" class="form-select">
                         <option value="">All Fuel Types</option>
@@ -53,7 +83,7 @@
                 </div>
 
                 <!-- Year -->
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <label class="form-label fw-bold">Year</label>
                     <select name="year" class="form-select">
                         <option value="">All Years</option>
@@ -62,6 +92,88 @@
                             <option value="@i">@i</option>
                         }
                     </select>
+                </div>
+
+                <!-- Sort By -->
+                <div class="col-md-2">
+                    <label class="form-label fw-bold">Sort By</label>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                            @(ViewBag.CurrentSort == "model_desc" ? "Model (Desc)" : 
+                              ViewBag.CurrentSort == "priceperday_asc" ? "Price/Day (Asc)" :
+                              ViewBag.CurrentSort == "priceperday_desc" ? "Price/Day (Desc)" :
+                              ViewBag.CurrentSort == "saleprice_asc" ? "Sale Price (Asc)" :
+                              ViewBag.CurrentSort == "saleprice_desc" ? "Sale Price (Desc)" :
+                              ViewBag.CurrentSort == "year_asc" ? "Year (Asc)" :
+                              ViewBag.CurrentSort == "year_desc" ? "Year (Desc)" : "Model (Asc)")
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item" asp-action="Index" 
+                                   asp-route-brand="@Context.Request.Query["brand"]"
+                                   asp-route-minPrice="@Context.Request.Query["minPrice"]"
+                                   asp-route-maxPrice="@Context.Request.Query["maxPrice"]"
+                                   asp-route-fuel="@Context.Request.Query["fuel"]"
+                                   asp-route-year="@Context.Request.Query["year"]"
+                                   asp-route-priceType="@Context.Request.Query["priceType"]"
+                                   asp-route-sortOrder="">Model (Asc)</a></li>
+                            <li><a class="dropdown-item" asp-action="Index" 
+                                   asp-route-brand="@Context.Request.Query["brand"]"
+                                   asp-route-minPrice="@Context.Request.Query["minPrice"]"
+                                   asp-route-maxPrice="@Context.Request.Query["maxPrice"]"
+                                   asp-route-fuel="@Context.Request.Query["fuel"]"
+                                   asp-route-year="@Context.Request.Query["year"]"
+                                   asp-route-priceType="@Context.Request.Query["priceType"]"
+                                   asp-route-sortOrder="model_desc">Model (Desc)</a></li>
+                            <li><a class="dropdown-item" asp-action="Index" 
+                                   asp-route-brand="@Context.Request.Query["brand"]"
+                                   asp-route-minPrice="@Context.Request.Query["minPrice"]"
+                                   asp-route-maxPrice="@Context.Request.Query["maxPrice"]"
+                                   asp-route-fuel="@Context.Request.Query["fuel"]"
+                                   asp-route-year="@Context.Request.Query["year"]"
+                                   asp-route-priceType="@Context.Request.Query["priceType"]"
+                                   asp-route-sortOrder="priceperday_asc">Price/Day (Asc)</a></li>
+                            <li><a class="dropdown-item" asp-action="Index" 
+                                   asp-route-brand="@Context.Request.Query["brand"]"
+                                   asp-route-minPrice="@Context.Request.Query["minPrice"]"
+                                   asp-route-maxPrice="@Context.Request.Query["maxPrice"]"
+                                   asp-route-fuel="@Context.Request.Query["fuel"]"
+                                   asp-route-year="@Context.Request.Query["year"]"
+                                   asp-route-priceType="@Context.Request.Query["priceType"]"
+                                   asp-route-sortOrder="priceperday_desc">Price/Day (Desc)</a></li>
+                            <li><a class="dropdown-item" asp-action="Index" 
+                                   asp-route-brand="@Context.Request.Query["brand"]"
+                                   asp-route-minPrice="@Context.Request.Query["minPrice"]"
+                                   asp-route-maxPrice="@Context.Request.Query["maxPrice"]"
+                                   asp-route-fuel="@Context.Request.Query["fuel"]"
+                                   asp-route-year="@Context.Request.Query["year"]"
+                                   asp-route-priceType="@Context.Request.Query["priceType"]"
+                                   asp-route-sortOrder="saleprice_asc">Sale Price (Asc)</a></li>
+                            <li><a class="dropdown-item" asp-action="Index" 
+                                   asp-route-brand="@Context.Request.Query["brand"]"
+                                   asp-route-minPrice="@Context.Request.Query["minPrice"]"
+                                   asp-route-maxPrice="@Context.Request.Query["maxPrice"]"
+                                   asp-route-fuel="@Context.Request.Query["fuel"]"
+                                   asp-route-year="@Context.Request.Query["year"]"
+                                   asp-route-priceType="@Context.Request.Query["priceType"]"
+                                   asp-route-sortOrder="saleprice_desc">Sale Price (Desc)</a></li>
+                            <li><a class="dropdown-item" asp-action="Index" 
+                                   asp-route-brand="@Context.Request.Query["brand"]"
+                                   asp-route-minPrice="@Context.Request.Query["minPrice"]"
+                                   asp-route-maxPrice="@Context.Request.Query["maxPrice"]"
+                                   asp-route-fuel="@Context.Request.Query["fuel"]"
+                                   asp-route-year="@Context.Request.Query["year"]"
+                                   asp-route-priceType="@Context.Request.Query["priceType"]"
+                                   asp-route-sortOrder="year_asc">Year (Asc)</a></li>
+                            <li><a class="dropdown-item" asp-action="Index" 
+                                   asp-route-brand="@Context.Request.Query["brand"]"
+                                   asp-route-minPrice="@Context.Request.Query["minPrice"]"
+                                   asp-route-maxPrice="@Context.Request.Query["maxPrice"]"
+                                   asp-route-fuel="@Context.Request.Query["fuel"]"
+                                   asp-route-year="@Context.Request.Query["year"]"
+                                   asp-route-priceType="@Context.Request.Query["priceType"]"
+                                   asp-route-sortOrder="year_desc">Year (Desc)</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
@@ -92,45 +204,43 @@
             <div id="carListings" class="row g-4">
                 @foreach (var car in Model)
                 {
-                    <div class="col-md-4 col-lg-3">
+                    <div class="col-sm-6 col-md-4 col-lg-3">
                         <div class="card h-100 shadow-sm border-0">
-                            <img src="~/images/default-car.jpg" class="card-img-top" alt="@car.Model" style="height:200px; object-fit:cover;" />
-
+                            <img src="@(car.ImageUrl)" class="card-img-top" alt="@car.Model" style="height:200px; object-fit:cover;" />
                             <div class="card-body">
-                                <h5 class="card-title">@car.Model</h5>
-                                <p class="card-text mb-1">
-                                    <strong>Brand:</strong> @(car.Brand?.BrandName ?? "N/A")
-                                </p>
-                                <p class="card-text mb-1">
-                                    <strong>Year:</strong> @car.Year
-                                </p>
-                                <p class="card-text mb-1">
-                                    <strong>Fuel:</strong> @car.FuelType
-                                </p>
-                                <p class="card-text mb-1">
-                                    <strong>Transmission:</strong> @car.Transmission
-                                </p>
-                                <p class="card-text">
-                                    <strong>Price/Day:</strong> @car.PricePerDay EGP
-                                </p>
+                                <h5 class="card-title">@car.Brand?.BrandName @car.Model @car.Year</h5>
+                                <div class="d-flex justify-content-between align-items-center mt-1">
+                                    <div class="text-center">
+                                        <small class="text-muted">Price/Day</small>
+                                        <h5 class="text-primary fw-bold mb-0">@car.PricePerDay.ToString("N0") EGP</h5>
+                                    </div>
+                                    <div class="text-center">
+                                        <small class="text-muted">Sale Price</small>
+                                        <h5 class="text-success fw-bold mb-0">@car.SalePrice.ToString("N0") EGP</h5>
+                                    </div>
+                                </div>
                             </div>
 
-                            <div class="card-footer bg-transparent border-0 d-flex justify-content-between">
-                                <a asp-action="Details" asp-route-id="@car.Id" class="btn btn-outline-primary btn-sm">
-                                    Details
-                                </a>
-                                <a asp-action="Edit" asp-route-id="@car.Id" class="btn btn-outline-success btn-sm">
-                                    Edit
-                                </a>
-                                <a asp-action="Delete" asp-route-id="@car.Id" class="btn btn-outline-danger btn-sm">
-                                    Delete
-                                </a>
+                            <div class="card-footer bg-transparent">
+                                <div class="btn-group" role="group">
+                                    <a asp-action="Details" asp-route-id="@car.Id" class="btn btn-outline-primary btn-sm">
+                                        Details
+                                    </a>
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <a asp-action="Edit" asp-route-id="@car.Id" class="btn btn-outline-success btn-sm">
+                                            Edit
+                                        </a>
+                                        <a asp-action="Delete" asp-route-id="@car.Id" class="btn btn-outline-danger btn-sm">
+                                            Delete
+                                        </a>
+                                    }
+                                </div>
                             </div>
                         </div>
                     </div>
                 }
             </div>
         }
-
     </div>
 </section>

@@ -10,13 +10,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container. 
 builder.Services.AddControllersWithViews();
-
-// Add DbContext to the container 
-//This For Temproray DB To Test The App without Data Base if You Want To use Sql just Make useInMemory=false in appsettings 
-
-// Register DbContext 
-
-
 builder.Services.AddControllersWithViews();
 
 bool useInMemory = builder.Configuration.GetValue<bool>("DatabaseSettings:UseInMemory");
@@ -44,6 +37,9 @@ builder.Services.AddIdentity<User, IdentityRole>(options => options.SignIn.Requi
 // Register Repositories (Scoped) 
 builder.Services.AddScoped<IBrandRepository, BrandRepository>();
 builder.Services.AddScoped<ICarRepository, CarRepository>();
+builder.Services.AddScoped<IContractRepository, ContractRepository>();
+builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
+builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
 var app = builder.Build();
 
 

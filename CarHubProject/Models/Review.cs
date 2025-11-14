@@ -12,14 +12,12 @@ namespace CarHubProject.Models
         [StringLength(2000, ErrorMessage = "Comment cannot be longer than 2000 characters.")]
         public string? Comment { get; set; } // Comment can be optional
 
-        [Required]
         [DataType(DataType.Date)]
         [Display(Name = "Date")]
         public DateTime CreatedAt { get; set; } = DateTime.Now;
 
-        [Required(ErrorMessage = "A review must be linked to a customer.")]
         [Display(Name = "Customer")]
-        public int CustomerId { get; set; }
+        public string? CustomerId { get; set; }
 
         [Required(ErrorMessage = "A review must be linked to a car.")]
         [Display(Name = "Car")]

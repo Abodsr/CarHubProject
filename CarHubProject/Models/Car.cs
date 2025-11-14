@@ -15,9 +15,13 @@ namespace CarHubProject.Models
 
         [Required(ErrorMessage = "Please set a price.")]
         [Range(100, 100000, ErrorMessage = "Price must be between 100 EGP and  100,000 EGP .")]
-        public int PricePerDay { get; set; }
+        public decimal PricePerDay { get; set; }
 
-        [Required(ErrorMessage = "Status is required.(Available,Rented,Maintenance)")]
+        [Required(ErrorMessage = "Please set a sale price.")]
+        [Range(10000, 10000000, ErrorMessage = "Price must be between 10,000 EGP and 10,000,000 EGP.")]
+        public decimal SalePrice { get; set; }
+
+        [Required(ErrorMessage = "Status is required.(Available,Rented,Maintenance,Sold)")]
         [StringLength(20)]
         public string? Status { get; set; }
 
@@ -42,5 +46,6 @@ namespace CarHubProject.Models
 
         public Brand ?Brand { get; set; }
         public bool IsDeleted { get; set; } = false;
+        public string? ImageUrl { get; set; }
     }
 }

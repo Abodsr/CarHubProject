@@ -15,7 +15,7 @@ namespace CarHubProject.Controllers
         
         public IActionResult Index()
         {
-            return View();
+            return Redirect("/");
         }
 
         public IActionResult Privacy()

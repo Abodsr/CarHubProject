@@ -8,7 +8,7 @@ namespace CarHubProject.Repositories
         //CRUD
         List<Car> GetAll();
         public List<Car> Search(string? model = null, int? brandId = null, int? year = null,
-                        string? fuelType = null, decimal? minPrice = null, decimal? maxPrice = null);
+                        string? fuelType = null, decimal? minPrice = null, decimal? maxPrice = null, string? priceType = null);
         
         void Add(Car car);
         Car? GetById(int carId);

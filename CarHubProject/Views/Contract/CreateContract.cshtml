@@ -1,0 +1,69 @@
+@model CarHubProject.ViewModels.CreateContractViewModel
+
+@{
+    ViewData["Title"] = "Create Contract";
+}
+
+<h1>Create Contract for @(Model.CarDetails?.Model ?? "N/A")</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateContract">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <input type="hidden" asp-for="CarId" />
+            <div class="form-group">
+                <label asp-for="Contract.ContractType" class="control-label"></label>
+                <select asp-for="Contract.ContractType" class="form-control">
+                    <option value="Rental">Rental</option>
+                    <option value="Sale">Sale</option>
+                </select>
+                <span asp-validation-for="Contract.ContractType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Contract.StartDate" class="control-label"></label>
+                <input asp-for="Contract.StartDate" class="form-control" />
+                <span asp-validation-for="Contract.StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Contract.EndDate" class="control-label"></label>
+                <input asp-for="Contract.EndDate" class="form-control" />
+                <span asp-validation-for="Contract.EndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" asp-controller="Car">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $(document).ready(function () {
+            var contractType = $('#Contract_ContractType');
+            var startDate = $('#Contract_StartDate');
+            var endDate = $('#Contract_EndDate');
+
+            function toggleDateFields() {
+                if (contractType.val() === 'Sale') {
+                    startDate.prop('disabled', true);
+                    endDate.prop('disabled', true);
+                } else {
+                    startDate.prop('disabled', false);
+                    endDate.prop('disabled', false);
+                }
+            }
+
+            toggleDateFields();
+
+            contractType.on('change', function () {
+                toggleDateFields();
+            });
+        });
+    </script>
+}

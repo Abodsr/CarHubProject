@@ -6,7 +6,7 @@
 
 <h1 class="mb-4">Edit Car</h1>
 
-<form asp-action="Edit" asp-controller="Car" method="post" class="p-3 border rounded shadow-sm">
+<form asp-action="Edit" asp-controller="Car" method="post" class="p-3 border rounded shadow-sm" enctype="multipart/form-data">
 
    
     <input type="hidden" asp-for="Id" />
@@ -15,7 +15,7 @@
         <label asp-for="BrandId" class="form-label">Brand</label>
         <select asp-for="BrandId" class="form-select">
             <option value="">-- Choose Brand --</option>
-            @foreach (var brand in ViewBag.Brands)
+            @foreach (var brand in ViewBag.brands)
             {
                 <option value="@brand.BrandId" selected="@(brand.BrandId == Model.BrandId)">
                     @brand.BrandName
@@ -41,6 +41,12 @@
         <label asp-for="PricePerDay" class="form-label">Price Per Day (EGP)</label>
         <input asp-for="PricePerDay" class="form-control" type="number" />
         <span asp-validation-for="PricePerDay" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="SalePrice" class="form-label">Sale Price</label>
+        <input asp-for="SalePrice" class="form-control" type="number" />
+        <span asp-validation-for="SalePrice" class="text-danger"></span>
     </div>
 
     <div class="mb-3">
@@ -86,6 +92,12 @@
             <option value="Maintenance" selected="@(Model.Status == "Maintenance")">Maintenance</option>
         </select>
         <span asp-validation-for="Status" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ImageUrl" class="form-label">Image</label>
+        <input type="file" name="imageFile" class="form-control" />
+        <img src="@Model.ImageUrl" class="img-thumbnail mt-2" style="max-height: 200px;" />
     </div>
 
     <div class="d-flex justify-content-between mt-4">

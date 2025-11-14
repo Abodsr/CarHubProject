@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CarHubProject")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+28e02160e25eb45fba5fa068e03019e949a4c98e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aa59b0f5a57b815a9f935fe51d0ec830bfbdb3ba")]
 [assembly: System.Reflection.AssemblyProductAttribute("CarHubProject")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CarHubProject")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
