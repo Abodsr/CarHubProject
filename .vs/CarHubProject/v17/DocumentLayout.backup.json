@@ -1,21 +1,13 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\dadsa\\source\\repos\\CarHubProject\\",
+  "WorkspaceRootPath": "C:\\Users\\Abdelrahman\\source\\repos\\CarHubProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0FA6E642-DB90-4BF4-9714-FD6DAEBE1AD5}|CarHubProject\\CarHubProject.csproj|c:\\users\\dadsa\\source\\repos\\carhubproject\\carhubproject\\views\\car\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{0FA6E642-DB90-4BF4-9714-FD6DAEBE1AD5}|CarHubProject\\CarHubProject.csproj|c:\\users\\abdelrahman\\source\\repos\\carhubproject\\carhubproject\\views\\car\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{0FA6E642-DB90-4BF4-9714-FD6DAEBE1AD5}|CarHubProject\\CarHubProject.csproj|solutionrelative:carhubproject\\views\\car\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0FA6E642-DB90-4BF4-9714-FD6DAEBE1AD5}|CarHubProject\\CarHubProject.csproj|c:\\users\\dadsa\\source\\repos\\carhubproject\\carhubproject\\controllers\\carcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0FA6E642-DB90-4BF4-9714-FD6DAEBE1AD5}|CarHubProject\\CarHubProject.csproj|solutionrelative:carhubproject\\controllers\\carcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0FA6E642-DB90-4BF4-9714-FD6DAEBE1AD5}|CarHubProject\\CarHubProject.csproj|c:\\users\\dadsa\\source\\repos\\carhubproject\\carhubproject\\views\\car\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{0FA6E642-DB90-4BF4-9714-FD6DAEBE1AD5}|CarHubProject\\CarHubProject.csproj|solutionrelative:carhubproject\\views\\car\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0FA6E642-DB90-4BF4-9714-FD6DAEBE1AD5}|CarHubProject\\CarHubProject.csproj|c:\\users\\dadsa\\source\\repos\\carhubproject\\carhubproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0FA6E642-DB90-4BF4-9714-FD6DAEBE1AD5}|CarHubProject\\CarHubProject.csproj|c:\\users\\abdelrahman\\source\\repos\\carhubproject\\carhubproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0FA6E642-DB90-4BF4-9714-FD6DAEBE1AD5}|CarHubProject\\CarHubProject.csproj|solutionrelative:carhubproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -40,48 +32,22 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\dadsa\\source\\repos\\CarHubProject\\CarHubProject\\Views\\Car\\Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Abdelrahman\\source\\repos\\CarHubProject\\CarHubProject\\Views\\Car\\Index.cshtml",
               "RelativeDocumentMoniker": "CarHubProject\\Views\\Car\\Index.cshtml",
-              "ToolTip": "C:\\Users\\dadsa\\source\\repos\\CarHubProject\\CarHubProject\\Views\\Car\\Index.cshtml*",
-              "RelativeToolTip": "CarHubProject\\Views\\Car\\Index.cshtml*",
-              "ViewState": "AgIAAOEAAAAAAAAAAAAswPcAAABPAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Abdelrahman\\source\\repos\\CarHubProject\\CarHubProject\\Views\\Car\\Index.cshtml",
+              "RelativeToolTip": "CarHubProject\\Views\\Car\\Index.cshtml",
+              "ViewState": "AgIAAEwAAAAAAAAAAAAAwFkAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-15T22:23:49.036Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\dadsa\\source\\repos\\CarHubProject\\CarHubProject\\Views\\Car\\Create.cshtml",
-              "RelativeDocumentMoniker": "CarHubProject\\Views\\Car\\Create.cshtml",
-              "ToolTip": "C:\\Users\\dadsa\\source\\repos\\CarHubProject\\CarHubProject\\Views\\Car\\Create.cshtml",
-              "RelativeToolTip": "CarHubProject\\Views\\Car\\Create.cshtml",
-              "ViewState": "AgIAAEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-15T22:22:55.957Z",
+              "WhenOpened": "2025-11-16T14:50:57.972Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "CarController.cs",
-              "DocumentMoniker": "C:\\Users\\dadsa\\source\\repos\\CarHubProject\\CarHubProject\\Controllers\\CarController.cs",
-              "RelativeDocumentMoniker": "CarHubProject\\Controllers\\CarController.cs",
-              "ToolTip": "C:\\Users\\dadsa\\source\\repos\\CarHubProject\\CarHubProject\\Controllers\\CarController.cs",
-              "RelativeToolTip": "CarHubProject\\Controllers\\CarController.cs",
-              "ViewState": "AgIAAFAAAAAAAAAAAAA9wGUAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-15T22:22:28.011Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\dadsa\\source\\repos\\CarHubProject\\CarHubProject\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\Abdelrahman\\source\\repos\\CarHubProject\\CarHubProject\\Program.cs",
               "RelativeDocumentMoniker": "CarHubProject\\Program.cs",
-              "ToolTip": "C:\\Users\\dadsa\\source\\repos\\CarHubProject\\CarHubProject\\Program.cs",
+              "ToolTip": "C:\\Users\\Abdelrahman\\source\\repos\\CarHubProject\\CarHubProject\\Program.cs",
               "RelativeToolTip": "CarHubProject\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",

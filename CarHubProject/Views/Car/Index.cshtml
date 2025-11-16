@@ -15,10 +15,10 @@
     <div class="container">
         <h2 class="text-center mb-4">Find Your Perfect Match</h2>
 
-        <form method="get" asp-action="Index" asp-controller="Car">
+        <form method="get" asp-action="Index" 
+        asp-controller="Car">
             <div class="row g-3">
-                <!-- Brand -->
-                <div class="col-md-2">
+                <div class="col-6 col-md-4 col-lg-2">
                     <label class="form-label fw-bold">Brand</label>
                     <select name="brand" class="form-select">
                         <option value="">All Brands</option>
@@ -34,7 +34,7 @@
                 </div>
 
                 <!-- Price Type -->
-                <div class="col-md-2">
+                <div class="col-6 col-md-4 col-lg-2">
                     <label class="form-label fw-bold">Price Type</label>
                     <select name="priceType" class="form-select">
                         @{
@@ -61,7 +61,7 @@
                 </div>
 
                 <!-- Price -->
-                <div class="col-md-2">
+                <div class="col-6 col-md-4 col-lg-2">
                     <label class="form-label fw-bold">Price Range (EGP)</label>
                     <div class="input-group">
                         <input type="number" class="form-control" name="minPrice" placeholder="Min" min="0" />
@@ -71,7 +71,7 @@
                 </div>
 
                 <!-- Fuel Type -->
-                <div class="col-md-2">
+                <div class="col-6 col-md-4 col-lg-2">
                     <label class="form-label fw-bold">Fuel Type</label>
                     <select name="fuel" class="form-select">
                         <option value="">All Fuel Types</option>
@@ -83,7 +83,7 @@
                 </div>
 
                 <!-- Year -->
-                <div class="col-md-2">
+                <div class="col-6 col-md-4 col-lg-2">
                     <label class="form-label fw-bold">Year</label>
                     <select name="year" class="form-select">
                         <option value="">All Years</option>
@@ -95,7 +95,7 @@
                 </div>
 
                 <!-- Sort By -->
-                <div class="col-md-2">
+                <div class="col-6 col-md-4 col-lg-2">
                     <label class="form-label fw-bold">Sort By</label>
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
@@ -201,23 +201,18 @@
         }
         else
         {
-            <div id="carListings" class="row g-4">
+            <div class="row g-4">
                 @foreach (var car in Model)
                 {
-                    <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="col-12 col-md-4 col-lg-3">
                         <div class="card h-100 shadow-sm border-0">
                             <img src="@(car.ImageUrl)" class="card-img-top" alt="@car.Model" style="height:200px; object-fit:cover;" />
                             <div class="card-body">
-                                <h5 class="card-title">@car.Brand?.BrandName @car.Model @car.Year</h5>
-                                <div class="d-flex justify-content-between align-items-center mt-1">
-                                    <div class="text-center">
-                                        <small class="text-muted">Price/Day</small>
-                                        <h5 class="text-primary fw-bold mb-0">@car.PricePerDay.ToString("N0") EGP</h5>
-                                    </div>
-                                    <div class="text-center">
-                                        <small class="text-muted">Sale Price</small>
-                                        <h5 class="text-success fw-bold mb-0">@car.SalePrice.ToString("N0") EGP</h5>
-                                    </div>
+                                <h5 class="card-title">@car.Brand?.BrandName @car.Model</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">@car.Year</h6>
+                                <div class="d-flex flex-wrap justify-content-between align-items-center">
+                                    <span class="badge bg-primary mb-1">Rent: @car.PricePerDay.ToString("N0") EGP/Day</span>
+                                    <span class="badge bg-success mb-1">Sale: @car.SalePrice.ToString("N0") EGP</span>
                                 </div>
                             </div>
 
@@ -242,7 +237,7 @@
                 }
                 @if (User.IsInRole("Admin"))
                 {
-                    <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="col-12 col-md-4 col-lg-3">
                         <div class="card h-100 shadow-sm border-0 text-center d-flex flex-column justify-content-center align-items-center p-3"
                              style="border: 2px dashed #0d6efd; cursor: pointer;"
                              onclick="location.href='@Url.Action("Create", "Car")'">

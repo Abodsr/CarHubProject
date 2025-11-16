@@ -8196,23 +8196,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\dadsa\\.nuget\\packages\\": {},
+    "C:\\Users\\Abdelrahman\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dadsa\\source\\repos\\CarHubProject\\CarHubProject\\CarHubProject.csproj",
+      "projectUniqueName": "C:\\Users\\Abdelrahman\\source\\repos\\CarHubProject\\CarHubProject\\CarHubProject.csproj",
       "projectName": "CarHubProject",
-      "projectPath": "C:\\Users\\dadsa\\source\\repos\\CarHubProject\\CarHubProject\\CarHubProject.csproj",
-      "packagesPath": "C:\\Users\\dadsa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dadsa\\source\\repos\\CarHubProject\\CarHubProject\\obj\\",
+      "projectPath": "C:\\Users\\Abdelrahman\\source\\repos\\CarHubProject\\CarHubProject\\CarHubProject.csproj",
+      "packagesPath": "C:\\Users\\Abdelrahman\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Abdelrahman\\source\\repos\\CarHubProject\\CarHubProject\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\dadsa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Abdelrahman\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
