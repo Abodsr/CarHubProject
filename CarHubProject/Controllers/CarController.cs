@@ -44,6 +44,11 @@ namespace CarHubProject.Controllers
                 maxPrice: maxPrice,
                 priceType: priceType
             );
+            if (!User.IsInRole("Admin"))
+            {
+                cars = cars.Where(c => c.Status == "Available").ToList();
+            }
+
 
             switch (sortOrder)
             {
@@ -149,25 +154,46 @@ namespace CarHubProject.Controllers
         [Authorize(Roles = "Admin")]
         public IActionResult Edit(Car car, IFormFile imageFile)
         {
-            if (ModelState.IsValid)
-            {
+            ModelState.Remove("imageFile");
+
+             if (ModelState.IsValid)
+             {
+                var oldCar = _carRepository.GetById(car.Id);
+                if (oldCar == null) return NotFound();
+
+                //Upadte Data
+                oldCar.Model = car.Model;
+                oldCar.Year = car.Year;
+                oldCar.PricePerDay = car.PricePerDay;
+                oldCar.Color = car.Color;
+                oldCar.Transmission = car.Transmission;
+                oldCar.FuelType = car.FuelType;
+                oldCar.Mileage = car.Mileage;
+                oldCar.BrandId = car.BrandId;
+                oldCar.Status = car.Status;
+
+                
                 if (imageFile != null)
                 {
                     string uniqueFileName = Guid.NewGuid().ToString() + "_" + imageFile.FileName;
                     string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "uploads");
                     string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
                     {
-                        imageFile.CopyTo(fileStream);
+                        imageFile.CopyTo(stream);
                     }
-                    car.ImageUrl = "/uploads/" + uniqueFileName;
+
+                    oldCar.ImageUrl = "/uploads/" + uniqueFileName;
                 }
+
                 
-                _carRepository.Update(car);
                 _carRepository.Save();
-         
+
                 return RedirectToAction("Index");
-            }
+             }
+
+            
 
             ViewData["brands"] = _brandRepository.GetAll();
             return View(car);

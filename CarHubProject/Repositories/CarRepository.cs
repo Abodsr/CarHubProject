@@ -58,9 +58,10 @@ namespace CarHubProject.Repositories
         public List<Car> Search(string? model = null, int? brandId = null, int? year = null,
                         string? fuelType = null, decimal? minPrice = null, decimal? maxPrice = null, string? priceType = null)
         {
+            //We get all Cars that not Delteted then we filter it the Controller if its available or not
             var query = _context.Cars
                 .Include(c => c.Brand)
-                .Where(x => !x.IsDeleted && x.Status == "Available");
+                .Where(x => !x.IsDeleted);
 
             if (!string.IsNullOrEmpty(model))
                 query = query.Where(x => !string.IsNullOrEmpty(x.Model) && x.Model.ToLower().Contains(model!.ToLower()));
