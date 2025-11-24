@@ -1,30 +1,78 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using CarHubProject.Models;
+using CarHubProject.Repositories;
+using CarHubProject.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CarHubProject.Controllers
 {
     [Authorize(Roles = "Admin")]
+
+    
     public class UserController : Controller
     {
-        private readonly AppDbContext _context;
 
-        public UserController(AppDbContext context)
+        private readonly AppDbContext _context;
+        private readonly ICarRepository _carRepository;
+        private readonly IContractRepository _contractRepository;
+        private readonly IBrandRepository _brandRepository;
+        private readonly UserManager<User> _userManager;
+
+        public UserController(
+        ICarRepository carRepository,
+        IContractRepository contractRepository,
+        IBrandRepository brandRepository,
+        AppDbContext context,
+        UserManager<User> userManager
+          )
         {
             _context = context;
+            _carRepository = carRepository;
+            _contractRepository = contractRepository;
+            _brandRepository = brandRepository;
+            _userManager = userManager;
         }
+
 
         // GET: User
         public async Task<IActionResult> Index()
         {
             return View(await _context.Users.ToListAsync());
         }
+
+
+
+        [AllowAnonymous]
+        public IActionResult UserDashboard()
+        {
+
+            string userId = _userManager.GetUserId(User);
+
+
+
+            var userContracts = _contractRepository
+               .GetAll()
+               .Where(c => c.CustomerId == userId)
+               .ToList();
+
+
+            var userCars = _carRepository
+                .GetAll()
+                .Where(car => userContracts.Any(contract => contract.CarId == car.Id))
+                .ToList();
+
+
+            var viewModel = new UserDashboardViewModel
+            {
+                UserContracts = userContracts,
+                UserCars = userCars
+            };
+
+            return View(viewModel);
+        }
+
 
         // GET: User/Details/5
         public async Task<IActionResult> Details(string id)

@@ -2,6 +2,7 @@
 using CarHubProject.Repositories;
 using CarHubProject.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,6 +14,7 @@ namespace CarHubProject.Controllers
         private readonly ICarRepository _carRepository;
         private readonly IContractRepository _contractRepository;
         private readonly IBrandRepository _brandRepository;
+
 
         public AdminController(ICarRepository carRepository, IContractRepository contractRepository, IBrandRepository brandRepository)
         {

@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewData["Title"] = "UserDashboard";
+}
+
+@model CarHubProject.ViewModels.UserDashboardViewModel
+
+<div class="container mt-4">
+
+    <h2 class="mb-4">Your Contracts</h2>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>Contract ID</th>
+                    <th>Car</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Total Amount</th>
+                    <th>Status</th>
+                    <th>Payment</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var contract in Model.UserContracts)
+                {
+                    var car = Model.UserCars.FirstOrDefault(c => c.Id == contract.CarId);
+
+                    <tr>
+                        <td>@contract.ContractId</td>
+                        <td>@car?.Model</td>
+
+                        <td>@contract.StartDate?.ToString("MM/dd/yyyy")</td>
+                        <td>@contract.EndDate?.ToString("MM/dd/yyyy")</td>
+
+                        <td>@contract.TotalAmount EGP</td>
+
+                        <td>
+                            <span class="badge 
+                                @(contract.Status == "Active" ? "bg-success" :
+                                  contract.Status == "Completed" ? "bg-secondary" :
+                                  contract.Status == "Cancelled" ? "bg-danger" : "bg-warning")">
+                                @contract.Status
+                            </span>
+                        </td>
+
+                        <td>
+                            <span class="badge 
+                                @(contract.PaymentStatus == "Paid" ? "bg-info" :
+                                  contract.PaymentStatus == "Pending" ? "bg-warning" : "bg-danger")">
+                                @contract.PaymentStatus
+                            </span>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+
+
+    <br /><br />
+
+    <h2 class="mb-4">Your Cars</h2>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>Model</th>
+                    <th>Year</th>
+                    <th>Color</th>
+                    <th>Transmission</th>
+                    <th>Mileage</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var car in Model.UserCars)
+                {
+                    <tr>
+                        <td>@car.Model</td>
+                        <td>@car.Year</td>
+                        <td>@car.Color</td>
+                        <td>@car.Transmission</td>
+                        <td>@car.Mileage KM</td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+
+</div>
