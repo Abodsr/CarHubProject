@@ -9,12 +9,14 @@ namespace CarHubProject.Controllers
     public class ReviewController : Controller
     {
         readonly IReviewRepository _reviewRepository;
+        readonly IContractRepository _contractRepository;
         readonly UserManager<User> _userManager;
 
-        public ReviewController(IReviewRepository reviewRepository, UserManager<User> userManager)
+        public ReviewController(IReviewRepository reviewRepository, UserManager<User> userManager, IContractRepository contractRepository)
         {
             _reviewRepository = reviewRepository;
             _userManager = userManager;
+            _contractRepository = contractRepository;
         }
 
         [Authorize(Roles = "Admin")]
@@ -50,19 +52,48 @@ namespace CarHubProject.Controllers
             var userId = _userManager.GetUserId(User);
             if (userId == null)
             {
-                return Challenge();
+                TempData["Error"] = "You must be logged in to review a car.";
+                return RedirectToAction("Details", "Car", new { id = review.CarId });
             }
 
+            // Check contract
+            var hasContract = _contractRepository.GetAll()
+                .Any(c => c.CustomerId == userId &&
+                          c.CarId == review.CarId &&
+                          (c.Status == "Completed" || c.Status == "Active"));
+
+            if (!hasContract)
+            {
+                TempData["Error"] = "You can only review cars you have rented or purchased.";
+                return RedirectToAction("Details", "Car", new { id = review.CarId });
+            }
+
+            // Check if reviewed before
+            var alreadyReviewed = _reviewRepository.GetAll()
+                .Any(r => r.CarId == review.CarId && r.CustomerId == userId);
+
+            if (alreadyReviewed)
+            {
+                TempData["Error"] = "You have already reviewed this car.";
+                return RedirectToAction("Details", "Car", new { id = review.CarId });
+            }
+
+            
             review.CustomerId = userId;
+            review.CreatedAt = DateTime.Now;
 
             if (ModelState.IsValid)
             {
                 _reviewRepository.Add(review);
                 _reviewRepository.Save();
+
+                TempData["Success"] = "Review submitted successfully!";
                 return RedirectToAction("Details", "Car", new { id = review.CarId });
             }
+
             return View(review);
         }
+
 
         [HttpGet]
         [Authorize(Roles = "Admin")]

@@ -46,7 +46,11 @@ namespace CarHubProject.Controllers
             );
             if (!User.IsInRole("Admin"))
             {
-                cars = cars.Where(c => c.Status == "Available").ToList();
+                 cars = _carRepository
+                .GetAll()
+                .Where(c => c.Status != "Sold")
+                .ToList();
+
             }
 
 

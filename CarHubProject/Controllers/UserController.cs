@@ -50,19 +50,15 @@ namespace CarHubProject.Controllers
 
             string userId = _userManager.GetUserId(User);
 
-
-
             var userContracts = _contractRepository
-               .GetAll()
-               .Where(c => c.CustomerId == userId)
-               .ToList();
-
+                .GetAll()
+                .Where(c => c.CustomerId == userId)
+                .ToList();
 
             var userCars = _carRepository
                 .GetAll()
                 .Where(car => userContracts.Any(contract => contract.CarId == car.Id))
                 .ToList();
-
 
             var viewModel = new UserDashboardViewModel
             {

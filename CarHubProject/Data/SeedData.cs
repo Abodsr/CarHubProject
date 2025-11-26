@@ -50,6 +50,17 @@ namespace CarHubProject.Data
 
                 await userManager.CreateAsync(regularUser, "User@123");
                 await userManager.AddToRoleAsync(regularUser, "User");
+                var anotherUser = new User
+                {
+                    UserName = "customer@carhub.com",
+                    Email = "customer@carhub.com",
+                    EmailConfirmed = true,
+                    FirstName = "Customer",
+                    LastName = "User"
+                };
+
+                await userManager.CreateAsync(anotherUser, "User@123");
+                await userManager.AddToRoleAsync(anotherUser, "User");
             }
 
             if (!context.Brands.Any())
@@ -81,19 +92,92 @@ namespace CarHubProject.Data
 
                 var cars = new Car[]
                 {
-                    new Car{Model="Corolla", Year=2023, PricePerDay=140.00m, SalePrice=200000.00m, Status="Available", Color="Red", Transmission="Automatic", FuelType="Petrol", Mileage=12000, BrandId=toyota.BrandId, ImageUrl="https://dummyimage.com/800x600/&text=Toyota+Corolla"},
-                    new Car{Model="Mustang", Year=2022, PricePerDay=180.00m, SalePrice=400000.00m, Status="Available", Color="Blue", Transmission="Manual", FuelType="Petrol", Mileage=20000, BrandId=ford.BrandId, ImageUrl="https://dummyimage.com/800x600/&text=Ford+Mustang"},
-                    new Car{Model="Civic", Year=2023, PricePerDay=145.00m, SalePrice=220000.00m, Status="Available", Color="Silver", Transmission="Automatic", FuelType="Petrol", Mileage=10000, BrandId=honda.BrandId, ImageUrl="https://dummyimage.com/800x600/&text=Honda+Civic"},
-                    new Car{Model="3 Series", Year=2022, PricePerDay=250.00m, SalePrice=500000.00m, Status="Available", Color="Gray", Transmission="Automatic", FuelType="Petrol", Mileage=18000, BrandId=bmw.BrandId, ImageUrl="https://dummyimage.com/800x600/&text=BMW+3+Series"},
-                    new Car{Model="C-Class", Year=2023, PricePerDay=280.00m, SalePrice=550000.00m, Status="Available", Color="White", Transmission="Automatic", FuelType="Petrol", Mileage=12000, BrandId=mercedes.BrandId, ImageUrl="https://dummyimage.com/800x600/&text=Mercedes-Benz+C-Class"},
-                    new Car{Model="Cybertruck", Year=2023, PricePerDay=500.00m, SalePrice=1000000.00m, Status="Available", Color="Silver", Transmission="Automatic", FuelType="Electric", Mileage=5000, BrandId=tesla.BrandId, ImageUrl="https://dummyimage.com/800x600/&text=Tesla+Cybertruck"}
+                    new Car{
+                        Model="Corolla",
+                        Year=2023,
+                        PricePerDay=140.00m,
+                        SalePrice=200000.00m,
+                        Status="Available",
+                        Color="Red",
+                        Transmission="Automatic",
+                        FuelType="Petrol",
+                        Mileage=12000,
+                        BrandId=toyota.BrandId,
+                        ImageUrl="/uploads/cars/toyota-corolla.jpg"
+                    },
+                    new Car{
+                        Model="Mustang",
+                        Year=2022,
+                        PricePerDay=180.00m,
+                        SalePrice=400000.00m,
+                        Status="Available",
+                        Color="Blue",
+                        Transmission="Manual",
+                        FuelType="Petrol",
+                        Mileage=20000,
+                        BrandId=ford.BrandId,
+                        ImageUrl="/uploads/cars/ford-mustang.jpg"
+                    },
+                    new Car{
+                        Model="Civic",
+                        Year=2023,
+                        PricePerDay=145.00m,
+                        SalePrice=220000.00m,
+                        Status="Available",
+                        Color="Silver",
+                        Transmission="Automatic",
+                        FuelType="Petrol",
+                        Mileage=10000,
+                        BrandId=honda.BrandId,
+                        ImageUrl="/uploads/cars/honda-civic.jpg"
+                    },
+                    new Car{
+                        Model="3 Series",
+                        Year=2022,
+                        PricePerDay=250.00m,
+                        SalePrice=500000.00m,
+                        Status="Available",
+                        Color="Gray",
+                        Transmission="Automatic",
+                        FuelType="Petrol",
+                        Mileage=18000,
+                        BrandId=bmw.BrandId,
+                        ImageUrl="/uploads/cars/bmw-3series.jpg"
+                    },
+                    new Car{
+                        Model="C-Class",
+                        Year=2023,
+                        PricePerDay=280.00m,
+                        SalePrice=550000.00m,
+                        Status="Available",
+                        Color="White",
+                        Transmission="Automatic",
+                        FuelType="Petrol",
+                        Mileage=12000,
+                        BrandId=mercedes.BrandId,
+                        ImageUrl="/uploads/cars/mercedes-c-class.jpg"
+                    },
+                    new Car{
+                        Model="Cybertruck",
+                        Year=2023,
+                        PricePerDay=500.00m,
+                       SalePrice=1000000.00m,
+                        Status="Available",
+                        Color="Silver",
+                        Transmission="Automatic",
+                        FuelType="Electric",
+                        Mileage=5000,
+                        BrandId=tesla.BrandId,
+                        ImageUrl="/uploads/cars/tesla-cybertruck.jpg"
+                    }
                 };
-                foreach (Car c in cars)
-                {
+
+                foreach (var c in cars)
                     context.Cars.Add(c);
-                }
+
                 await context.SaveChangesAsync();
             }
+
         }
     }
 }

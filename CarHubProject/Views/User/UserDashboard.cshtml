@@ -74,6 +74,7 @@
                     <th>Color</th>
                     <th>Transmission</th>
                     <th>Mileage</th>
+                    <th>Actions</th> 
                 </tr>
             </thead>
 
@@ -86,11 +87,20 @@
                         <td>@car.Color</td>
                         <td>@car.Transmission</td>
                         <td>@car.Mileage KM</td>
+
+                        <td>
+                            <a asp-controller="Review"
+                               asp-action="Create"
+                               asp-route-carId="@car.Id"
+                               class="btn btn-primary btn-sm">
+                                Add Review
+                            </a>
+                        </td>
                     </tr>
                 }
             </tbody>
+    </table>
+</div>
 
-        </table>
-    </div>
 
 </div>

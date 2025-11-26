@@ -4,42 +4,95 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - CarHubProject</title>
+
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/CarHubProject.styles.css" asp-append-version="true" />
 </head>
-<body>
+
+
+<body class="d-flex flex-column min-vh-100">
+
+
+    <!-- NAVBAR -->
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-primary border-bottom box-shadow mb-3">
+      <nav class="navbar navbar-expand-sm border-bottom border-secondary shadow-sm">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Car" asp-action="Index">
-                    <i class="fa-solid fa-car"></i> CarHubProject
+
+                <a class="navbar-brand fw-bold" asp-area="" asp-controller="Car" asp-action="Index">
+                    <i class="fa-solid fa-car-side"></i>
+                    CarHubProject
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+
+
+                <button id="themeToggle" class="btn btn-sm btn-secondary ms-3">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+                        data-bs-target="#navbarNav" aria-controls="navbarNav" 
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <partial name="_LoginPartial" />
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+
+                    <ul class="navbar-nav ms-auto">
+                        <partial name="_LoginPartial" />
+                    </ul>
+
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - CarHubProject - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <!-- PAGE CONTENT -->
+    <main class="container py-4 flex-grow-1">
+
+        @RenderBody()
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer py-3 mt-5 border-top">
+        <div class="container text-center">
+            &copy; 2025 - CarHubProject
+            • <a class="text-decoration-none" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+
+
+    <!-- SCRIPTS -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
+
+    <script>
+        const body = document.body;
+        const toggle = document.getElementById("themeToggle");
+
+        if (localStorage.getItem("theme") === "dark") {
+            body.classList.add("dark-mode");
+            toggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
+        } else {
+            body.classList.remove("dark-mode");
+            toggle.innerHTML = '<i class="fa-solid fa-moon"></i>';
+        }
+
+        toggle.addEventListener("click", () => {
+            body.classList.toggle("dark-mode");
+
+            if (body.classList.contains("dark-mode")) {
+                localStorage.setItem("theme", "dark");
+                toggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
+            } else {
+                localStorage.setItem("theme", "light");
+                toggle.innerHTML = '<i class="fa-solid fa-moon"></i>';
+            }
+        });
+    </script>
+
 </body>
 </html>

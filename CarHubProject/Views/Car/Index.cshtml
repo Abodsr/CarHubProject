@@ -210,28 +210,73 @@
                             <div class="card-body">
                                 <h5 class="card-title">@car.Brand?.BrandName @car.Model</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">@car.Year</h6>
+                                @if (car.Status == "Rented")
+                                    {
+                                        <span class="badge bg-danger">Rented</span>
+                                    }
+                                    else if (car.Status == "Maintenance")
+                                    {
+                                        <span class="badge bg-warning text-dark">Maintenance</span>
+                                    }
+                                    else if (car.Status == "Sold")
+                                    {
+                                        <span class="badge bg-secondary">Sold</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-success">Available</span>
+                                    }
+
+
                                 <div class="d-flex flex-wrap justify-content-between align-items-center">
                                     <span class="badge bg-primary mb-1">Rent: @car.PricePerDay.ToString("N0") EGP/Day</span>
                                     <span class="badge bg-success mb-1">Sale: @car.SalePrice.ToString("N0") EGP</span>
                                 </div>
                             </div>
 
-                            <div class="card-footer bg-transparent">
-                                <div class="btn-group" role="group">
-                                    <a asp-action="Details" asp-route-id="@car.Id" class="btn btn-outline-primary btn-sm">
-                                        Details
-                                    </a>
-                                    @if (User.IsInRole("Admin"))
+                           <div class="card-footer bg-transparent">
+                            <div class="d-flex gap-2">
+                                <a asp-action="Details" asp-route-id="@car.Id" class="btn btn-outline-primary btn-sm">
+                                    Details
+                                </a>
+
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <a asp-action="Edit" asp-route-id="@car.Id" class="btn btn-outline-success btn-sm">Edit</a>
+                                    <a asp-action="Delete" asp-route-id="@car.Id" class="btn btn-outline-danger btn-sm">Delete</a>
+                                }
+
+                                @if (car.Status?.Trim().ToLower() == "available")
                                     {
-                                        <a asp-action="Edit" asp-route-id="@car.Id" class="btn btn-outline-success btn-sm">
-                                            Edit
-                                        </a>
-                                        <a asp-action="Delete" asp-route-id="@car.Id" class="btn btn-outline-danger btn-sm">
-                                            Delete
-                                        </a>
-                                    }
-                                </div>
+                                        @if (SignInManager.IsSignedIn(User) && User.IsInRole("User"))
+                                        {
+                                            <a asp-controller="Contract"
+                                               asp-action="CreateContract"
+                                               asp-route-carId="@car.Id"
+                                               class="btn btn-primary btn-sm">
+                                                Rent or Buy Now
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <a asp-area="Identity" 
+                                               asp-page="/Account/Login" 
+                                               asp-route-returnUrl="@Url.Action("CreateContract", "Contract", new { carId = car.Id })"
+                                               class="btn btn-primary btn-sm">
+                                                Rent or Buy
+                                            </a>
+                                        }
+                                      }
+                                        else
+                                        {
+                                            <button class="btn btn-secondary btn-sm" disabled>Not Available</button>
+                                        }
+
+
+                                   
                             </div>
+                          </div>
+
                         </div>
                     </div>
                 }

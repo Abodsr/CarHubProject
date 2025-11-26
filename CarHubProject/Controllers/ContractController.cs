@@ -32,6 +32,14 @@ namespace CarHubProject.Controllers
                 return NotFound();
             }
 
+            
+            var status = car.Status?.Trim().ToLower();
+            if (status != "available")
+            {
+                TempData["Error"] = $"This car is not available. Current status: {car.Status}";
+                return RedirectToAction("Details", "Car", new { id = carId });
+            }
+
             var viewModel = new CreateContractViewModel
             {
                 CarId = carId,
@@ -53,53 +61,53 @@ namespace CarHubProject.Controllers
         {
             var car = _carRepository.GetById(viewModel.CarId);
             if (car == null)
-            {
                 return NotFound();
-            }
 
             var userId = _userManager.GetUserId(User);
             if (userId == null)
-            {
                 return Challenge();
+
+            var status = car.Status?.Trim().ToLower();
+            if (status != "available")
+            {
+                TempData["Error"] = $"This car is not available. Current status: {car.Status}";
+                return RedirectToAction("Details", "Car", new { id = viewModel.CarId });
             }
 
             var contract = viewModel.Contract;
             contract.CarId = car.Id;
+            contract.CustomerId = userId;
 
             if (contract.ContractType == "Rental")
             {
                 if (!contract.StartDate.HasValue)
-                {
-                    ModelState.AddModelError("Contract.StartDate", "Start date is required for a rental.");
-                }
+                    ModelState.AddModelError("Contract.StartDate", "Start date is required.");
+
                 if (!contract.EndDate.HasValue)
-                {
-                    ModelState.AddModelError("Contract.EndDate", "End date is required for a rental.");
-                }
+                    ModelState.AddModelError("Contract.EndDate", "End date is required.");
 
                 if (contract.StartDate.HasValue && contract.StartDate.Value < DateTime.Today)
-                {
                     ModelState.AddModelError("Contract.StartDate", "Start date cannot be in the past.");
-                }
-                if (contract.StartDate.HasValue && contract.EndDate.HasValue && contract.EndDate.Value < contract.StartDate.Value)
-                {
+
+                if (contract.StartDate.HasValue &&
+                    contract.EndDate.HasValue &&
+                    contract.EndDate < contract.StartDate)
                     ModelState.AddModelError("Contract.EndDate", "End date must be after start date.");
-                }
 
                 if (contract.StartDate.HasValue && contract.EndDate.HasValue)
                 {
-                    var duration = (contract.EndDate.Value - contract.StartDate.Value).Days;
+                    int duration = (contract.EndDate.Value - contract.StartDate.Value).Days;
                     if (duration < 1)
-                    {
-                        ModelState.AddModelError("Contract.EndDate", "Rental must be for at least one day.");
-                    }
+                        ModelState.AddModelError("Contract.EndDate", "Minimum rental is one day.");
 
                     var existingContracts = _contractRepository.GetContractsByCarId(car.Id);
                     foreach (var existingContract in existingContracts)
                     {
-                        if (existingContract.ContractType == "Rental" && existingContract.Status != "Cancelled")
+                        if (existingContract.ContractType == "Rental" &&
+                            existingContract.Status != "Cancelled")
                         {
-                            if (contract.StartDate.Value < existingContract.EndDate && contract.EndDate.Value > existingContract.StartDate)
+                            if (contract.StartDate < existingContract.EndDate &&
+                                contract.EndDate > existingContract.StartDate)
                             {
                                 ModelState.AddModelError(string.Empty, "This car is not available for the selected dates.");
                                 break;
@@ -110,36 +118,24 @@ namespace CarHubProject.Controllers
             }
 
             if (!ModelState.IsValid)
-            {
-                viewModel.CarDetails = car; // Re-populate CarDetails for view
                 return View("CreateContract", viewModel);
-            }
 
-            contract.CustomerId = userId;
-            contract.Status = "Pending";
-            contract.PaymentStatus = "Pending";
-
-            if (contract.ContractType == "Rental")
-            {
-                var duration = (contract.EndDate!.Value - contract.StartDate!.Value).Days;
-                contract.TotalAmount = duration * car.PricePerDay;
-                car.Status = "Rented";
-            }
-            else if (contract.ContractType == "Sale")
-            {
-                contract.TotalAmount = car.SalePrice;
-                contract.StartDate = DateTime.Today;
-                contract.EndDate = DateTime.Today;
-                car.Status = "Sold";
-            }
-
-            _carRepository.Update(car);
-            _carRepository.Save();
             _contractRepository.Add(contract);
             _contractRepository.Save();
 
-            return RedirectToAction("CreateForContract", "Payment", new { contractId = contract.ContractId });
+            if (contract.ContractType == "Purchase")
+                car.Status = "Sold";
+
+            if (contract.ContractType == "Rental")
+                car.Status = "Rented";
+
+            _carRepository.Update(car);
+            _carRepository.Save();
+
+            TempData["Success"] = "Contract created successfully!";
+            return RedirectToAction("Index", "Car");
         }
+
         public IActionResult Index()
         {
             var contracts = _contractRepository.GetAll();

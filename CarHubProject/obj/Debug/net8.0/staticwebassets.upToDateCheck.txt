@@ -58,3 +58,9 @@ wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
+wwwroot\uploads\cars\toyota-corolla.jpg
+wwwroot\uploads\cars\tesla-cybertruck.jpg
+wwwroot\uploads\cars\mercedes-c-class.jpg
+wwwroot\uploads\cars\honda-civic.jpg
+wwwroot\uploads\cars\bmw-3series.jpg
+wwwroot\uploads\cars\ford-mustang.jpg
