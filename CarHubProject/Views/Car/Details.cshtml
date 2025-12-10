@@ -103,11 +103,11 @@
     <div>
         @if (SignInManager.IsSignedIn(User))
         {
-            <a asp-controller="Contract" asp-action="CreateContract" asp-route-carId="@Model.CarDetails?.Id" class="btn btn-primary">Rent or Buy</a>
+            <a asp-controller="Contract" asp-action="CreateContract" asp-route-carId="@Model.CarDetails?.Id" class="btn btn-primary">Rent/Buy</a>
         }
         else
         {
-            <a asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@Url.Action("CreateContract", "Contract", new { carId = Model.CarDetails?.Id })" class="btn btn-primary">Rent or Buy</a>
+            <a asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@Url.Action("CreateContract", "Contract", new { carId = Model.CarDetails?.Id })" class="btn btn-primary">Rent/Buy</a>
         }
         <a asp-controller="Review" asp-action="Create" asp-route-carId="@Model.CarDetails?.Id" class="btn btn-secondary">Leave a Review</a>
     </div>
